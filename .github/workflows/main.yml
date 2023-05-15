@@ -36,7 +36,10 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
     - uses: snyk/actions/setup@master
-    - run: snyk test
+    - name: Snyk monitor
+      run: snyk test
+      env:
+        SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
     - run: npm ci
     - name: serverless deploy
       uses: serverless/github-action@v3.2
