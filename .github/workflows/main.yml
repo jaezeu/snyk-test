@@ -35,6 +35,8 @@ jobs:
       uses: actions/setup-node@v3
       with:
         node-version: ${{ matrix.node-version }}
+    - uses: snyk/actions/setup@master
+    - run: snyk test
     - run: npm ci
     - name: serverless deploy
       uses: serverless/github-action@v3.2
