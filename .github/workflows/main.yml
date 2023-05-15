@@ -41,6 +41,8 @@ jobs:
       continue-on-error: true
       env:
         SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+      with:
+        command: monitor
     - run: npm ci
     - name: serverless deploy
       uses: serverless/github-action@v3.2
